@@ -23,8 +23,6 @@ and open the template in the editor.
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/bootstrap-select.js"></script>
-
-        <script src="js/bootstrap.min.js"></script>
     </head>
     <body class="fixed-left">
 
@@ -228,7 +226,6 @@ and open the template in the editor.
                                                     <div class="modal-body">
                                                         <div class="form-group">
                                                             <label>開始時刻</label>
-                                                            <ul class="dropdown-menu" role="menu" id="startHH"></ul>
                                                             <select id="startHour" class="selectpicker col-xs-2" name="startHour"></select>時
                                                             <select id="startTime" class="selectpicker col-xs-2" name="startTime"></select>分
                                                         </div>
@@ -253,7 +250,6 @@ and open the template in the editor.
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                         <button type="button" class="btn btn-primary">Save changes</button>
                                                     </div>
-                                                    <select id="s1" class="selectpicker" name="s1"></select>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
                                         </div><!-- /.modal -->
@@ -285,7 +281,7 @@ and open the template in the editor.
                                                         jQuery('#endTime').append(min);
                                                     }
                                                     for (var i=1; i <= resource; i++){
-                                                        var r="<option value='" + i +"'>" + i +"</option>";
+                                                        var r="<option value='m" + i +"'>" + i +"</option>";
                                                         jQuery('#resource').append(r);
                                                     }
                                                 });
