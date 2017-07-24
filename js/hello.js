@@ -109,17 +109,21 @@ dp.headerHeightAutoFit = true;
 dp.init();
 
 dp.onEventClick = function(args) {
-    console.log(args.e.start());
-
     var startH = args.e.start().value.split('T')[1].split(':')[0];
     var startM = args.e.start().value.split('T')[1].split(':')[1];
-    // jQuery('#startHour').val('12');
-    jQuery('.modal').modal('show');
-    // console.log(startH);
-    // console.log(jQuery(".modal-body > div:nth-child(1) > div:nth-child(3) > button > span.filter-option.pull-left"));
-    // jQuery(".btn .dropdown-toggle .btn-default").val(startH);
-    // });
+    var endH = args.e.end().value.split('T')[1].split(':')[0];
+    var endM = args.e.end().value.split('T')[1].split(':')[1];
+    var resource = args.e.resource().replace('m','');
 
+    jQuery('.modal').modal('show', function(){});
+    jQuery('.modal-header h4').text(args.e.start().value.split('T')[0]);
+    jQuery('select#startHour').parent().find('button > span.filter-option.pull-left').text(startH);
+    jQuery('select#startTime').parent().find('button > span.filter-option.pull-left').text(startM);
+    jQuery('select#endHour').parent().find('button > span.filter-option.pull-left').text(endH);
+    jQuery('select#endTime').parent().find('button > span.filter-option.pull-left').text(endM);
+    jQuery('select#resource').parent().find('button > span.filter-option.pull-left').text(resource);
+    jQuery('select#resource').parent().find('button > span.filter-option.pull-left').text(resource);
+    jQuery('textarea#text').val(args.e.text());
 };
 
 var rsv = [
@@ -129,7 +133,7 @@ var rsv = [
         "end_dt": "2015-06-19T13:00:00",
         "title": "Special event",
         "text": "Special msg",
-        "resource": "m1"
+        "resource": "m2"
     },
     {
         "guid": "41f9f9bd-c680-c8fd-ec09-a80b5465df71",
