@@ -113,10 +113,12 @@ dp.onEventClick = function(args) {
 
     var startH = args.e.start().value.split('T')[1].split(':')[0];
     var startM = args.e.start().value.split('T')[1].split(':')[1];
-    // jQuery('.modal').val('show');
-    jQuery('.modal').modal('show', function(){
-        jQuery(".btn .dropdown-toggle .btn-default").val(startH);
-    });
+    // jQuery('#startHour').val('12');
+    jQuery('.modal').modal('show');
+    // console.log(startH);
+    // console.log(jQuery(".modal-body > div:nth-child(1) > div:nth-child(3) > button > span.filter-option.pull-left"));
+    // jQuery(".btn .dropdown-toggle .btn-default").val(startH);
+    // });
 
 };
 
