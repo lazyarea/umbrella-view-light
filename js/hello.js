@@ -109,6 +109,7 @@ dp.headerHeightAutoFit = true;
 dp.init();
 
 dp.onEventClick = function(args) {
+    var guid   = args.e.id();
     var startH = args.e.start().value.split('T')[1].split(':')[0];
     var startM = args.e.start().value.split('T')[1].split(':')[1];
     var endH = args.e.end().value.split('T')[1].split(':')[0];
@@ -124,6 +125,7 @@ dp.onEventClick = function(args) {
     jQuery('select#resource').parent().find('button > span.filter-option.pull-left').text(resource);
     jQuery('select#resource').parent().find('button > span.filter-option.pull-left').text(resource);
     jQuery('textarea#text').val(args.e.text());
+    jQuery('input#guid').val(guid);
 };
 
 var rsv = [
