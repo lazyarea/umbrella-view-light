@@ -88,7 +88,11 @@ dp.onEventResized = function (args) {
 // event creating
 dp.onTimeRangeSelected = function (args) {
     var name = prompt("New event name:", "Event");
+    dp.clearSelection();
     if (!name) return;
+    console.log(name);
+    console.log(args);
+    
     var e = new DayPilot.Event({
         start: args.start,
         end: args.end,
@@ -96,6 +100,7 @@ dp.onTimeRangeSelected = function (args) {
         resource: args.resource,
         text: "Event"
     });
+    
     dp.events.add(e);
     dp.clearSelection();
     dp.message("Created");
@@ -108,14 +113,14 @@ dp.headerHeightAutoFit = true;
 
 dp.init();
 
-dp.onEventClick = function(args) {
+dp.openModal = function(args) {
     var guid   = args.e.id();
     var startH = args.e.start().value.split('T')[1].split(':')[0];
     var startM = args.e.start().value.split('T')[1].split(':')[1];
     var endH = args.e.end().value.split('T')[1].split(':')[0];
     var endM = args.e.end().value.split('T')[1].split(':')[1];
     var resource = args.e.resource().replace('m','');
-
+    
     jQuery('.modal').modal('show', function(){});
     jQuery('.modal-header h4').text(args.e.start().value.split('T')[0]);
     jQuery('select#startHour').parent().find('button > span.filter-option.pull-left').text(startH);
@@ -126,6 +131,10 @@ dp.onEventClick = function(args) {
     jQuery('select#resource').parent().find('button > span.filter-option.pull-left').text(resource);
     jQuery('textarea#text').val(args.e.text());
     jQuery('input#guid').val(guid);
+};
+
+dp.onEventClick = function(args) {
+    dp.openModal(args);
 };
 
 var rsv = [
