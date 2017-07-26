@@ -225,27 +225,29 @@ and open the template in the editor.
                                                         <h4 class="modal-title">Modal title</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label>開始時刻</label>
-                                                            <select id="startHour" class="selectpicker col-xs-2" name="startHour"></select>時
-                                                            <select id="startTime" class="selectpicker col-xs-2" name="startTime"></select>分
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>終了時刻</label>
-                                                            <select id="endHour" class="selectpicker col-xs-2" name="endHour"></select>時
-                                                            <select id="endTime" class="selectpicker col-xs-2" name="endTime"></select>分
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>席番</label>
-                                                            <select id="resource" class="selectpicker col-xs-2" name="resource"></select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>メモ</label>
-                                                            <textarea class="form-control" id="text"></textarea>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="hidden" name="guid" id="guid">
-                                                        </div>
+                                                        <form id="staticModalForm">
+                                                            <div class="form-group">
+                                                                <label>開始時刻</label>
+                                                                <select id="startHour" class="selectpicker col-xs-2" name="startHour"></select>時
+                                                                <select id="startTime" class="selectpicker col-xs-2" name="startTime"></select>分
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>終了時刻</label>
+                                                                <select id="endHour" class="selectpicker col-xs-2" name="endHour"></select>時
+                                                                <select id="endTime" class="selectpicker col-xs-2" name="endTime"></select>分
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>席番</label>
+                                                                <select id="resource" class="selectpicker col-xs-2" name="resource"></select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>メモ</label>
+                                                                <textarea class="form-control" id="text"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="hidden" name="guid" id="guid">
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

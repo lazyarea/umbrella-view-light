@@ -97,7 +97,6 @@ dp.onTimeRangeSelected = function (args) {
     };
     dp.openModal(obj);
     dp.clearSelection();
-    return false;
 
     // var name = prompt("New event name:", "Event");
     // if (!name) return;
@@ -181,3 +180,10 @@ for( var i=0; i<rsv.length; i++){
     });
     dp.events.add(e);
 }
+
+jQuery('#staticModal').on('click', '.modal-footer .btn-primary', function() {
+    jQuery('#staticModal').modal('hide');
+    // console.log(DayPilot.guid());
+    console.log('変更を保存をクリックしました。');
+    dp.message("Created");
+});
