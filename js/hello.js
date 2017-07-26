@@ -87,24 +87,34 @@ dp.onEventResized = function (args) {
 
 // event creating
 dp.onTimeRangeSelected = function (args) {
-    var name = prompt("New event name:", "Event");
-    dp.clearSelection();
-    if (!name) return;
-    console.log(name);
-    console.log(args);
-    
-    var e = new DayPilot.Event({
+
+    var obj = {
         start: args.start,
         end: args.end,
         id: DayPilot.guid(),
         resource: args.resource,
         text: "Event"
-    });
-    
-    dp.events.add(e);
+    };
+    dp.openModal(obj);
     dp.clearSelection();
-    dp.message("Created");
+    return false;
+
+    // var name = prompt("New event name:", "Event");
+    // if (!name) return;
+    //
+    // var e = new DayPilot.Event({
+    //     start: args.start,
+    //     end: args.end,
+    //     id: DayPilot.guid(),
+    //     resource: args.resource,
+    //     text: "Event"
+    // });
+    //
+    // dp.events.add(e);
+    // // dp.clearSelection();
+    // dp.message("Created");
 };
+
 dp.onTimeRangeDoubleClicked = function(args) {
     alert("DoubleClick: start: " + args.start + " end: " + args.end + " resource: " + args.resource);
 };
@@ -114,27 +124,38 @@ dp.headerHeightAutoFit = true;
 dp.init();
 
 dp.openModal = function(args) {
-    var guid   = args.e.id();
-    var startH = args.e.start().value.split('T')[1].split(':')[0];
-    var startM = args.e.start().value.split('T')[1].split(':')[1];
-    var endH = args.e.end().value.split('T')[1].split(':')[0];
-    var endM = args.e.end().value.split('T')[1].split(':')[1];
-    var resource = args.e.resource().replace('m','');
-    
+    console.log(args.id);
+    console.log(args.start.value);
+    console.log(args.end.value);
+    console.log(args.resource);
+    // return false;
+
+    var guid   = args.id;
+    var startH = args.start.value.split('T')[1].split(':')[0];
+    var startM = args.start.value.split('T')[1].split(':')[1];
+    var endH = args.end.value.split('T')[1].split(':')[0];
+    var endM = args.end.value.split('T')[1].split(':')[1];
+    var resource = args.resource.replace('m','');
+
     jQuery('.modal').modal('show', function(){});
-    jQuery('.modal-header h4').text(args.e.start().value.split('T')[0]);
+    jQuery('.modal-header h4').text(args.start.value.split('T')[0]);
     jQuery('select#startHour').parent().find('button > span.filter-option.pull-left').text(startH);
     jQuery('select#startTime').parent().find('button > span.filter-option.pull-left').text(startM);
     jQuery('select#endHour').parent().find('button > span.filter-option.pull-left').text(endH);
     jQuery('select#endTime').parent().find('button > span.filter-option.pull-left').text(endM);
     jQuery('select#resource').parent().find('button > span.filter-option.pull-left').text(resource);
-    jQuery('select#resource').parent().find('button > span.filter-option.pull-left').text(resource);
-    jQuery('textarea#text').val(args.e.text());
+    jQuery('textarea#text').val(args.text);
     jQuery('input#guid').val(guid);
 };
 
 dp.onEventClick = function(args) {
-    dp.openModal(args);
+    var obj = {};
+    obj.id   = args.e.id();
+    obj.start = args.e.start();
+    obj.end = args.e.end();
+    obj.resource = args.e.resource().replace('m','');
+
+    dp.openModal(obj);
 };
 
 var rsv = [
