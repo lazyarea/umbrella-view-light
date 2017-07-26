@@ -124,12 +124,6 @@ dp.headerHeightAutoFit = true;
 dp.init();
 
 dp.openModal = function(args) {
-    console.log(args.id);
-    console.log(args.start.value);
-    console.log(args.end.value);
-    console.log(args.resource);
-    // return false;
-
     var guid   = args.id;
     var startH = args.start.value.split('T')[1].split(':')[0];
     var startM = args.start.value.split('T')[1].split(':')[1];
@@ -154,6 +148,7 @@ dp.onEventClick = function(args) {
     obj.start = args.e.start();
     obj.end = args.e.end();
     obj.resource = args.e.resource().replace('m','');
+    obj.text = args.e.text();
 
     dp.openModal(obj);
 };
