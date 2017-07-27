@@ -184,6 +184,28 @@ for( var i=0; i<rsv.length; i++){
 jQuery('#staticModal').on('click', '.modal-footer .btn-primary', function() {
     jQuery('#staticModal').modal('hide');
     // console.log(DayPilot.guid());
+    event.preventDefault();
+    jQuery.ajax({
+        method: "GET",
+        url: "http://www.example.com/index.html",
+        // data: { name: "John", location: "Boston" }
+        xhrFields: {
+            withCredentials: true
+        },
+    })
+    .done(function(result, textStatus, xhr) {
+        console.log( "success" );
+    })
+    .fail(function(xhr, textStatus, error) {
+        console.log( "error" );
+    // })
+    // .always(function() {
+    //     alert( "complete" );
+    // });
+    // jqxhr.always(function() {
+    //     alert( "second complete" );
+    });
+
     console.log('変更を保存をクリックしました。');
     dp.message("Created");
 });
