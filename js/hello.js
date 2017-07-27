@@ -14,43 +14,21 @@ dp.columnWidthSpec = "Fixed";
 dp.columnWidth = 80;
 dp.viewType = "Resources";
 dp.headerLevels = 2;
-dp.columns = [
-    { "name": "June 19, 2015", "children": [
-        { "name": "Machine #1", "id":"m1", "start": "2015-06-19"},
-        { "name": "Machine #2", "id":"m2", "start": "2015-06-19"},
-        { "name": "Machine #3", "id":"m3", "start": "2015-06-19"}
-    ]},
-    { "name": "June 20, 2015", "children": [
-        { "name": "Machine #1", "id":"m1", "start": "2015-06-20"},
-        { "name": "Machine #2", "id":"m2", "start": "2015-06-20"},
-        { "name": "Machine #3", "id":"m3", "start": "2015-06-20"}
-    ]},
-    { "name": "June 21, 2015", "children": [
-        { "name": "Machine #1", "id":"m1", "start": "2015-06-21"},
-        { "name": "Machine #2", "id":"m2", "start": "2015-06-21"},
-        { "name": "Machine #3", "id":"m3", "start": "2015-06-21"}
-    ]},
-    { "name": "June 22, 2015", "children": [
-        { "name": "Machine #1", "id":"m1", "start": "2015-06-22"},
-        { "name": "Machine #2", "id":"m2", "start": "2015-06-22"},
-        { "name": "Machine #3", "id":"m3", "start": "2015-06-22"}
-    ]},
-    { "name": "June 23, 2015", "children": [
-        { "name": "Machine #1", "id":"m1", "start": "2015-06-23"},
-        { "name": "Machine #2", "id":"m2", "start": "2015-06-23"},
-        { "name": "Machine #3", "id":"m3", "start": "2015-06-23"}
-    ]},
-    { "name": "June 24, 2015", "children": [
-        { "name": "Machine #1", "id":"m1", "start": "2015-06-24"},
-        { "name": "Machine #2", "id":"m2", "start": "2015-06-24"},
-        { "name": "Machine #3", "id":"m3", "start": "2015-06-24"}
-    ]},
-    { "name": "June 25, 2015", "children": [
-        { "name": "Machine #1", "id":"m1", "start": "2015-06-25"},
-        { "name": "Machine #2", "id":"m2", "start": "2015-06-25"},
-        { "name": "Machine #3", "id":"m3", "start": "2015-06-25"}
-    ]}
-];
+dp.columns = [];
+
+for( var i=0;i<7;i++){
+    var obj = {};
+    obj.name = moment().add(i, 'days').format("LL");
+    obj.children = [];
+    for( var j=1;j<=3;j++){
+        var child = {};
+        child.name = "Machine #" + j;
+        child.start = moment().add(i, 'days').format("YYYY-MM-DD");
+        child.id = "m" + j;
+        obj.children.push(child);
+    }
+    dp.columns.push(obj);
+}
 
 // bubble, with async loading
 dp.bubble = new DayPilot.Bubble({
