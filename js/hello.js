@@ -186,7 +186,7 @@ jQuery('#staticModal').on('click', '.modal-footer .btn-primary', function() {
     // console.log(DayPilot.guid());
     event.preventDefault();
     jQuery.ajax({
-        method: "GET",
+        method: "POST",
         url: "http://www.example.com/index.html",
         // data: { name: "John", location: "Boston" }
         xhrFields: {
