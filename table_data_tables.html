@@ -285,10 +285,11 @@ and open the template in the editor.
                                                         if( param[1].match(/^[0-9]+$/) == null ){
                                                             param = "dateadd=0".split("=");
                                                         }
-                                                        jQuery("a#date-minus").attr("href", "?dateadd=" + (Number(param[1]) + 1));
+                                                        jQuery("a#date-minus").attr("href", "?dateadd=" + (Number(param[1]) - 1));
                                                         jQuery("a#date-next").attr("href", "?dateadd=" + (Number(param[1]) + 1));
                                                     }
                                                 });
+
                                                 jQuery(function(){
                                                     var dayBeginsHour = 10;
                                                     var dayEndsHour = 19;
