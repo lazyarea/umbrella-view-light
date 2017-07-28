@@ -22,11 +22,11 @@ for(var i=0;i<diffadd.length;i++){
     f = diffadd[i].match(/^dateadd=[0-9]+/i);
     if( f) break;
 }
-if (f == null) {f={};f.input = 0;}
+if (f == null) {f={};f.input = 'dateadd=0';}
 
 for( var i=0;i<7;i++){
     var obj = {};
-    obj.name = moment().add((i + f.input.split("=")[1]), 'days').format("LL");
+    obj.name = moment().add( (i + Number(f.input.split("=")[1])), 'days').format("LL");
     obj.children = [];
     for( var j=1;j<=3;j++){
         var child = {};
