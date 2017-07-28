@@ -5,7 +5,7 @@ var dp = new DayPilot.Calendar("dp");
 dp.cellDuration = 15;
 dp.startDate = "2013-03-25";  // or just dp.startDate = "2013-03-25";
 dp.days = 1;
-dp.allDayEventHeight = 25;
+dp.allDayEventHeight = 10;
 dp.initScrollPos = 9 * 40;
 dp.dayBeginsHour = 10;
 dp.dayEndsHour = 19;

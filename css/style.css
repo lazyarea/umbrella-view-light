@@ -438,10 +438,13 @@ body.widescreen.fixed-left .footer{
 }
 
 .panel-box{
-    padding: 15px;
-  background: #fff;
-      border: 1px solid #e4e5e7;
+    /*padding: 15px;*/
+    padding: 0px;
+    background: #fff;
+    border: 1px solid #e4e5e7;
     margin-bottom: 20px;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 .panel-box h4{
     font-size: 13px;
