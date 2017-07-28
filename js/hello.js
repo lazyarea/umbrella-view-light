@@ -26,6 +26,7 @@ if (f == null) {f={};f.input = 'dateadd=0';}
 
 for( var i=0;i<7;i++){
     var obj = {};
+    console.log( Number(f.input) );
     obj.name = moment().add( (i + Number(f.input.split("=")[1])), 'days').format("LL");
     obj.children = [];
     for( var j=1;j<=3;j++){
@@ -202,6 +203,18 @@ jQuery('#staticModal').on('click', '.modal-footer .btn-primary', function() {
 
     console.log('変更を保存をクリックしました。');
     dp.message("Created");
+});
+
+jQuery('#date-minus').on('click', function() {
+    var dt = jQuery('.page-title h3').text();
+    jQuery(".page-title h3").text( moment(dt,'LL').add(-1, 'days').format("LL") );
+});
+jQuery('#date-current').on('click', function() {
+    jQuery(".page-title h3").text( moment().add( (i + Number(f.input.split("=")[1])), 'days').format("LL") );
+});
+jQuery('#date-next').on('click', function() {
+    var dt = jQuery('.page-title h3').text();
+    jQuery(".page-title h3").text( moment(dt,'LL').add(1, 'days').format("LL") );
 });
 
 function page_title(){
