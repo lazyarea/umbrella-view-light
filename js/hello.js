@@ -187,3 +187,7 @@ jQuery('#staticModal').on('click', '.modal-footer .btn-primary', function() {
     console.log('変更を保存をクリックしました。');
     dp.message("Created");
 });
+
+function page_title(){
+    console.log("page-title");
+}
