@@ -173,8 +173,8 @@ jQuery('#staticModal').on('click', '.modal-footer .btn-primary', function() {
     event.preventDefault();
     jQuery.ajax({
         method: "POST",
-        url: "http://www.example.com/index.html",
-        // data: { name: "John", location: "Boston" }
+        url: "http://www.example.com/api.php",
+        data: { name: "John", location: "Boston" },
         xhrFields: {
             withCredentials: true
         },
