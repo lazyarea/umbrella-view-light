@@ -174,9 +174,12 @@ jQuery('#staticModal').on('click', '.modal-footer .btn-primary', function() {
     jQuery.ajax({
         method: "POST",
         url: "http://www.example.com/api.php",
-        // data: { name: "John", location: "Boston" },
         data: {
-            start: sprintf('%sT%02d:%02d:00',jQuery('h4.modal-title').text(), jQuery('select#startHour').val(), jQuery('select#startTime').val()),
+            start_dt: sprintf('%sT%02d:%02d:00',jQuery('h4.modal-title').text(), jQuery('select#startHour').val(), jQuery('select#startTime').val()),
+            end_dt: sprintf('%sT%02d:%02d:00',jQuery('h4.modal-title').text(), jQuery('select#endHour').val(), jQuery('select#endTime').val()),
+            text: jQuery('textarea#text').val(),
+            resource: jQuery('select#resource').val(),
+            guid: jQuery('input#guid').val()
         },
         xhrFields: {
             withCredentials: true
