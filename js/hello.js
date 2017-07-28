@@ -116,6 +116,8 @@ dp.openModal = function(args) {
     var endM = args.end.value.split('T')[1].split(':')[1];
     var resource = args.resource.replace('m','');
 
+    console.log(args.start.value);
+
     jQuery('.modal').modal('show', function(){});
     jQuery('.modal-header h4').text(args.start.value.split('T')[0]);
     jQuery('select#startHour').parent().find('button > span.filter-option.pull-left').text(startH);
