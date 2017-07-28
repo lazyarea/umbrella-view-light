@@ -174,7 +174,10 @@ jQuery('#staticModal').on('click', '.modal-footer .btn-primary', function() {
     jQuery.ajax({
         method: "POST",
         url: "http://www.example.com/api.php",
-        data: { name: "John", location: "Boston" },
+        // data: { name: "John", location: "Boston" },
+        data: { name: "John", location: "Boston",
+            start: jQuery('select#startHour').val()
+        },
         xhrFields: {
             withCredentials: true
         },
