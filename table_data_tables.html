@@ -194,9 +194,9 @@ and open the template in the editor.
                 <div class="content">
                     <div class="container">
                         <div class="page-title">
-                            <h3>Data tables</h3>
+                            <h3></h3>
                             <a id="date-minus" href="#"><i class="fa fa-minus"></i> Prev Day</a>
-                            <a id="date-current" href="?dateadd=0">Today</a>
+                            <a id="date-current" href="#">Today</a>
                             <a id="date-next" href="#"><i class="fa fa-plus"></i> Next Day</a>
                         </div><!--end page title-->
                         <div class="row">
@@ -267,31 +267,10 @@ and open the template in the editor.
                                         <script type="text/javascript" src="js/hello.js"></script>
                                         <script type="text/javascript">
                                             $(document).ready(function() {
-                                                jQuery(function(){
-                                                    var href = window.location.href.split('?')[1].split('&');
-                                                    var f = null;
-                                                    for(var i=0;i<href.length;i++){
-                                                        f = href[i].match(/^dateadd=[0-9]+/i);
-                                                        if( f){
-                                                            console.log(f);
-                                                            page_title(f.input);
-                                                            return false;
-                                                        }
-                                                    }
-                                                    page_title(f);
-
-                                                    function page_title(str){
-                                                        if (!str) str = "dateadd=0";
-                                                        var param = str.split("=");
-                                                        if( param[1].match(/^[0-9]+$/) == null ){
-                                                            param = "dateadd=0".split("=");
-                                                        }
-                                                        jQuery("a#date-minus").attr("href", "?dateadd=" + (Number(param[1]) - 1));
-                                                        jQuery("a#date-next").attr("href", "?dateadd=" + (Number(param[1]) + 1));
-                                                    }
-                                                });
+                                                jQuery(".page-title h3").text( moment().add( (i + Number(f.input.split("=")[1])), 'days').format("LL") );
 
                                                 jQuery(function(){
+
                                                     var dayBeginsHour = 10;
                                                     var dayEndsHour = 19;
                                                     var resource = 3;
