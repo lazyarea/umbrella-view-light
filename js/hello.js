@@ -175,8 +175,8 @@ jQuery('#staticModal').on('click', '.modal-footer .btn-primary', function() {
         method: "POST",
         url: "http://www.example.com/api.php",
         data: {
-            start_dt: sprintf('%sT%02d:%02d:00',jQuery('h4.modal-title').text(), jQuery('select#startHour').parent().find('button > span.filter-option.pull-left').text(), jQuery('select#startTime').val()),
-            end_dt: sprintf('%sT%02d:%02d:00',jQuery('h4.modal-title').text(), jQuery('select#endHour').val(), jQuery('select#endTime').val()),
+            start_dt: sprintf('%sT%02d:%02d:00',jQuery('h4.modal-title').text(), jQuery('select#startHour').parent().find('button > span.filter-option.pull-left').text(), jQuery('select#startTime').parent().find('button > span.filter-option.pull-left').text()),
+            end_dt: sprintf('%sT%02d:%02d:00',jQuery('h4.modal-title').text(), jQuery('select#endHour').parent().find('button > span.filter-option.pull-left').text(), jQuery('select#endTime').parent().find('button > span.filter-option.pull-left').text()),
             text: jQuery('textarea#text').val(),
             resource: jQuery('select#resource').val(),
             guid: jQuery('input#guid').val()
