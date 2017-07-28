@@ -176,7 +176,7 @@ jQuery('#staticModal').on('click', '.modal-footer .btn-primary', function() {
         url: "http://www.example.com/api.php",
         // data: { name: "John", location: "Boston" },
         data: {
-            start: sprintf('%sT%02d:%02d:00',jQuery('h4.modal-title').val(), jQuery('select#startHour').val(), jQuery('select#startTime').val()),
+            start: sprintf('%sT%02d:%02d:00',jQuery('h4.modal-title').text(), jQuery('select#startHour').val(), jQuery('select#startTime').val()),
         },
         xhrFields: {
             withCredentials: true
