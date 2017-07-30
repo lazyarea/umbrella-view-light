@@ -16,13 +16,14 @@ dp.viewType = "Resources";
 dp.headerLevels = 2;
 dp.columns = [];
 
-var diffadd = window.location.href.split('?')[1].split('&');
+var df = "diffadd=0";
+var diffadd = (window.location.href.split('?')[1]) ?  window.location.href.split('?')[1].split('&') : df;
 var f = null;
 for(var i=0;i<diffadd.length;i++){
     f = diffadd[i].match(/^dateadd=[0-9]+/i);
     if( f) break;
 }
-if (f == null) {f={};f.input = 'dateadd=0';}
+if (f == null) {f={};f.input = df;}
 
 for( var i=0;i<7;i++){
     var obj = {};
