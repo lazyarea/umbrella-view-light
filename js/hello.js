@@ -217,7 +217,3 @@ jQuery('#date-next').on('click', function() {
     var dt = jQuery('.page-title h3').text();
     jQuery(".page-title h3").text( moment(dt,'LL').add(1, 'days').format("LL") );
 });
-
-function page_title(){
-    console.log("page-title");
-}
