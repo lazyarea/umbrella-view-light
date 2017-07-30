@@ -267,7 +267,8 @@ and open the template in the editor.
                                         <script type="text/javascript" src="js/hello.js"></script>
                                         <script type="text/javascript">
                                             $(document).ready(function() {
-                                                jQuery(".page-title h3").text( moment().add( (i + Number(f.input.split("=")[1])), 'days').format("LL") );
+                                                jQuery(".page-title h3").text( moment().format("LL") );
+console.log(moment().format("LL"));
 
                                                 jQuery(function(){
 

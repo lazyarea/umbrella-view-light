@@ -118,8 +118,6 @@ dp.openModal = function(args) {
     var endM = args.end.value.split('T')[1].split(':')[1];
     var resource = args.resource.replace('m','');
 
-console.log(args.start.value);
-
     jQuery('.modal').modal('show', function(){});
     jQuery('.modal-header h4').text(args.start.value.split('T')[0]);
     jQuery('select#startHour').parent().find('button > span.filter-option.pull-left').text(startH);
@@ -211,7 +209,7 @@ jQuery('#date-minus').on('click', function() {
     jQuery(".page-title h3").text( moment(dt,'LL').add(-1, 'days').format("LL") );
 });
 jQuery('#date-current').on('click', function() {
-    jQuery(".page-title h3").text( moment().add( (i + Number(f.input.split("=")[1])), 'days').format("LL") );
+    jQuery(".page-title h3").text( moment().format("LL") );
 });
 jQuery('#date-next').on('click', function() {
     var dt = jQuery('.page-title h3').text();
