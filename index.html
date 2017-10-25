@@ -7,19 +7,29 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="css/lazyarea.dataTables.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script>
   $(document).ready(function() {
-      var dataSet = [];
+      var mouseDown = false;
+      var days = 3;
+      var dataSet = [
+          {
+            "id":"",
+            "source":"",
+            "uid":""
+          },
+      ];
+      var skelSet = [];
       for( var i =0; i < 10; ++i){
           var hour = (("0" + (i+9)).slice(-2));
           for(var j = 0; j < 4; ++j){
               var min = ("0" + (j * 15)).slice(-2);
               var row = ["","","","","","","","",""];
               row.unshift(hour + ":" + min);
-              dataSet.push(row);
+              skelSet.push(row);
           }
       }
       // デフォルトの設定を変更
@@ -28,7 +38,7 @@
               url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
           }
       });
-      $('#example').DataTable({
+      var table = $('#example').DataTable({
         // 件数切替機能 無効
         lengthChange: false,
         // 検索機能 無効
@@ -56,7 +66,7 @@
             { title: "lane2" },
             { title: "lane3" },
         ],
-        data: dataSet,
+        data: skelSet,
         columnDefs: [
         // 1列目を消す(visibleをfalseにすると消えます)
         // { targets: 0, visible: true },
@@ -68,8 +78,54 @@
             var rows = api.rows( {page:'current'} ).nodes();
             var last=null;
 
-            console.log(rows);
+            console.log(rows.length);
+            // for(var i=0; i<rows.length; ++i){
+            for(var i=0; i<3; ++i){
+                var len = rows[i].length;
+               console.log(rows[i]);
+            }
         },
+        createdRow: function( row, data, dataIndex ) {
+        // Set the data-status attribute, and add a class
+            console.log($(row).find('td').length);
+            $( row ).find('td:eq(0)')
+                .attr('data-status', data.status ? 'locked' : 'unlocked')
+                .addClass('asset-context box');
+        },
+        // "initComplete": function () {
+        //     var api = this.api();
+        //     api.$('td').click( function () {
+        //         api.search( this.innerHTML ).draw();
+        //     } );
+        // }
+      });
+      // $("#example tbody").bind('click', "td", function(){
+      //   $tag_td = $(this)[0];
+      //   $tag_tr = $(this).parent()[0];
+      //   console.log("%s列, %s行", $tag_td.cellIndex, $tag_tr.rowIndex);
+      // });
+      // $('#example tbody').on( 'click', 'tr', function () {
+      //   $(this).toggleClass('selected');
+      // });
+      // $('#example tbody').on( 'click', 'td', function () {
+      //   console.log( table.cell( this ).attr("data-hout-time") );
+      //   // table.cell( this ).addClass('selected');
+      // });
+      $('#example tbody').on( 'mousedown', 'td', function () {
+          // var row = $(this).closest('tr').index();          //縦
+          // var col = this.cellIndex;          //横
+          // console.log('Row: ' + row + ', Column: ' + col);
+          mouseDown = true;
+      });
+      $('#example tbody').on( 'mouseup', 'td', function () {
+          mouseDown = false;
+      });
+      $('#example tbody').on( 'mousemove', 'td', function () {
+          if ( mouseDown == true){
+            var row = $(this).closest('tr').index();          //縦
+            var col = this.cellIndex;          //横
+            console.log('Row: ' + row + ', Column: ' + col);
+          }
       });
   } );
 </script>
@@ -79,11 +135,11 @@
   <small>
   <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
-            <tr style="text-align: left;">
-                <th rowspan="2">Hour</th>
-                <th colspan="3">1st</th>
-                <th colspan="3">2nd</th>
-                <th colspan="3">3rd</th>
+            <tr style="text-align: left;" id="th-days">
+                <th rowspan="2"></th>
+                <th colspan="3"></th>
+                <th colspan="3"></th>
+                <th colspan="3"></th>
             </tr>
             <tr style="text-align: left;">
                 <th></th>
